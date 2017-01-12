@@ -41,27 +41,13 @@ myApp.controller('mainCtrl', function ($scope, $http) {
     return ret;
   }
 
-  $scope.baseurl = parseBaseUrl(DCE_CONTROLLER_URL);
-
   // auto detect baseurl
-  var _lsUrl = parseBaseUrl(localStorage.baseurl);
-  var _localUrl = parseBaseUrl(location.hostname);
-  var _refUrl = parseBaseUrl(document.referrer);
-  if (testUrl(_lsUrl))
-    $scope.baseurl = _lsUrl;
-  else if (testUrl(_localUrl))
+  var _localUrl = parseBaseUrl(location.origin);
+  if (testUrl(_localUrl))
     $scope.baseurl = _localUrl;
-  else if (testUrl(_refUrl))
-    $scope.baseurl = _refUrl;
   if ($scope.baseurl.split(':').length > 2)
     $scope.baseAddr = $scope.baseurl.slice(0, $scope.baseurl.lastIndexOf(':'));
   else $scope.baseAddr = $scope.baseurl;
-
-  if (!!localStorage.username)
-    $scope.auth.username = localStorage.username;
-
-  if (!!localStorage.password)
-    $scope.auth.password = localStorage.password;
 
   $scope.initModal = function (opt) {
     $('#init-modal').modal(opt);
