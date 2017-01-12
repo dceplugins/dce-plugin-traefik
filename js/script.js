@@ -7,7 +7,8 @@ myApp.controller('mainCtrl', function ($scope, $http) {
   $scope.servDetail = null;
   $scope.alerts = [];
   $scope.authenticated = true;
-  $scope.auth_token = JSON.parse(localStorage.DCE_TOKEN);
+  if (localStorage.DCE_TOKEN)
+    $scope.auth_token = JSON.parse(localStorage.DCE_TOKEN);
   $scope.auth = {
     username: '',
     password: ''
