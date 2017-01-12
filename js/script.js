@@ -7,6 +7,7 @@ myApp.controller('mainCtrl', function ($scope, $http) {
   $scope.servDetail = null;
   $scope.alerts = [];
   $scope.authenticated = true;
+  $scope.auth_token = JSON.parse(localStorage.DCE_TOKEN);
   $scope.auth = {
     username: '',
     password: ''
@@ -245,10 +246,10 @@ myApp.controller('mainCtrl', function ($scope, $http) {
   };
 
   function getAuthHeader() {
-    if (localStorage.DCE_TOKEN)
+    if ($scope.auth_token)
       return {
         headers: {
-          'x-dce-access-token': localStorage.DCE_TOKEN
+          'x-dce-access-token': $scope.auth_token
         }
       };
     else
