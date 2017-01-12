@@ -245,11 +245,18 @@ myApp.controller('mainCtrl', function ($scope, $http) {
   };
 
   function getAuthHeader() {
-    return {
-      headers: {
-        'Authorization': 'Basic ' + btoa($scope.auth.username + ':' + $scope.auth.password)
-      }
-    };
+    if (localStorage.DCE_TOKEN)
+      return {
+        headers: {
+          'x-dce-access-token': localStorage.DCE_TOKEN
+        }
+      };
+    else
+      return {
+        headers: {
+          'Authorization': 'Basic ' + btoa($scope.auth.username + ':' + $scope.auth.password)
+        }
+      };
   }
 
   $scope.loginModal = function (opt) {
