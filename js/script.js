@@ -267,7 +267,7 @@ myApp.controller('mainCtrl', function ($scope, $http) {
 
   $scope.loginModalKeyDown = function ($event) {
     if ($event.key == 'Enter')
-      $scope.modalOnSave($scope.baseurl, $scope.auth);
+      $scope.loginModalOnSave($scope.baseurl, $scope.auth);
   };
 
   function newAlert(text, level) {
