@@ -317,7 +317,7 @@ myApp.controller('mainCtrl', function ($scope, $http) {
         $scope.traefik.uiPort = $scope.traefik.Endpoint.Ports.filter(function (p) {
           return p.TargetPort === 8080;
         })[0].PublishedPort;
-        $scope.traefik.uiUrl = $scope.baseAddr + ':' + $scope.traefik.uiPort;
+        $scope.traefik.uiUrl = $scope.baseAddr.replace('https://', 'http://') + ':' + $scope.traefik.uiPort;
         $scope.traefik.domain = $scope.traefik.Spec.TaskTemplate.ContainerSpec.Args.filter(function (a) {
           return a.startsWith('--docker.domain');
         })[0].split('=')[1];
