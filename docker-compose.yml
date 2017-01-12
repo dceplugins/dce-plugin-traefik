@@ -1,0 +1,26 @@
+version: '2'
+services:
+  traefik:
+    image: daocloud.io/daocloud/traefik
+    ports:
+      - 80
+      - 8080
+    volumes: 
+      - /var/run/docker.sock:/var/run/docker.sock
+    command: --docker --docker.swarmmode --docker.domain={{{DEFAULT_DOMAIM}}} --docker.watch --web
+    labels: 
+      io.daocloud.dce.traefik: traefik
+      io.daocloud.dce.compose.placement.constraints: '["node.role==manager"]'
+      io.daocloud.dce.compose.mode: global
+    networks: 
+      - traefik-net
+  manager:
+    image: daocloud.io/daocloud/traefik-manager
+    ports:
+      - 80
+    networks: 
+      - traefik-net
+
+networks: 
+  traefik-net:
+    external: true

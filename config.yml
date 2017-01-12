@@ -1,0 +1,12 @@
+name: traefik-swarm-mode
+description: |
+  Træfɪk, a modern reverse proxy.
+category: load-balancer
+url: https://hub.docker.com/_/traefik
+arguments:
+  - id: DEFAULT_DOMAIM
+    description: the default domain of docker provider
+    name: Default Doamin
+    type: string
+    required: true
+    default: "dce"
