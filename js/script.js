@@ -171,13 +171,13 @@ myApp.controller('mainCtrl', function ($scope, $http) {
         "Mode": {
           "global": {}
         },
-        "Networks": [{
-          "Target": netName,
-          "Aliases": [
-            "traefik"
-          ]
-        }],
         "TaskTemplate": {
+          "Networks": [{
+            "Target": netName,
+            "Aliases": [
+              "traefik"
+            ]
+          }],
           "RestartPolicy": {},
           "Placement": {
             "Constraints": [
