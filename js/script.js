@@ -302,7 +302,7 @@ myApp.controller('mainCtrl', function ($scope, $http) {
         if (_.isEmpty(s))
           return true;
         $scope.traefik = s[0];
-        $scope.traefik.netId = $scope.traefik.Spec.Networks[0].Target;
+        $scope.traefik.netId = $scope.traefik.Spec.TaskTemplate.Networks[0].Target;
         $http.get($scope.baseurl + '/networks/' + $scope.traefik.netId, getAuthHeader()).then(function (res) {
           $scope.traefik.netName = res.data.Name;
         });
